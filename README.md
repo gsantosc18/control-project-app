@@ -17,11 +17,13 @@ Auxiliar no gerenciamento de projetos e suas atividades.
   - Criar
   - Alterar
   - Apagar
+
 Os projetos terão os campos:
 - Nome
 - Descrição
 - Data da Criação
 - Data da última atualização
+
 As atividades terão os campos:
 - Nome
 - Descrição

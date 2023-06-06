@@ -1,15 +1,21 @@
-<mat-accordion>
-    <mat-grid-list cols="2">
-        <mat-expansion-panel *ngFor="let project of listProjects">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    {{ project.name }}
-                </mat-panel-title>
-                <mat-panel-description>
-                    {{ project.description }}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Data de criação: {{ project.createdAt }}</p>
-        </mat-expansion-panel>
-    </mat-grid-list>
-</mat-accordion>
+
+<div id="list-projects">
+    <mat-card *ngFor="let project of listProjects">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ project.name }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content class="list-project-content">
+            {{ project.description }}
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="openDialog(project)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

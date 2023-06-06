@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
@@ -31,7 +32,8 @@ import { ListProjectsComponent } from './list-projects/list-projects.component';
     MatGridListModule,
     MatCardModule,
     MatButtonModule, 
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

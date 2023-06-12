@@ -15,15 +15,24 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
+import { AppRouteModule } from './app.route';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ListProjectsComponent
+    ListProjectsComponent,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -33,9 +42,13 @@ import { ListProjectsComponent } from './list-projects/list-projects.component';
     MatCardModule,
     MatButtonModule, 
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    FormsModule,
+    AppRouteModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,10 +15,6 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 export class ListProjectsComponent {
   listProjects: Array<Project> = [
     { name: "Blog pessoal", description: "Projeto para criação de um blog pessoal.", createdAt: new Date() },
-    { name: "Blog pessoal", description: "Projeto para criação de um blog pessoal.", createdAt: new Date() },
-    { name: "Blog pessoal", description: "Projeto para criação de um blog pessoal.", createdAt: new Date() },
-    { name: "Blog pessoal", description: "Projeto para criação de um blog pessoal.", createdAt: new Date() },
-    { name: "Blog pessoal", description: "Projeto para criação de um blog pessoal.", createdAt: new Date() },
   ]
 
   config: PaginatorConfig = { length: 5, options: [5, 10, 25] }

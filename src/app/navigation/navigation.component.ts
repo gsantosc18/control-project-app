@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  title = "Controle de projetos";
+  @Input() title = "Controle de projetos";
+  @Input() showAddButton: boolean = false
+  @Input() router: string = ""
 }

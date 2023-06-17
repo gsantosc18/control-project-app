@@ -1,19 +1,25 @@
 <app-navigation [showAddButton]="true"></app-navigation>
 <div id="list-projects">
-    <mat-card *ngFor="let project of listProjects" class="list-project">
+    <mat-card *ngFor="let project of listProjects; let index = index" class="list-project">
         <mat-card-header>
           <mat-card-title-group>
             <mat-card-title>{{ project.name }}</mat-card-title>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content class="list-project-content">
-            {{ project.description }}
+            <p>
+                {{ project.description }}
+            </p>
+            <p style="font-size: 10pt;">
+                <span style="font-weight: bold;">Criado em: </span>
+                {{ project.createdAt | date:'dd/MM/YYYY HH:mm:ss' }}
+            </p>
         </mat-card-content>
         <mat-card-actions align="start">
-            <button mat-icon-button color="primary">
+            <button mat-icon-button color="primary" [routerLink]="['/updateProject', project.id]">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="openDialog(project)">
+            <button mat-icon-button color="warn" (click)="openDialog(project, index)">
                 <mat-icon>delete</mat-icon>
             </button>
         </mat-card-actions>

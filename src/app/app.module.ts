@@ -21,14 +21,17 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectService } from './service/http/ProjectService';
+import { UpdateProjectComponent } from './update-project/update-project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     ListProjectsComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    UpdateProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatTooltipModule,
     FormsModule,
-    AppRouteModule
+    AppRouteModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

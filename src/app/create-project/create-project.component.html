@@ -1,0 +1,35 @@
+<app-navigation title="Criar novo projeto" [showAddButton]="false" router="/"></app-navigation>
+<div id="wrapper">
+    <form class="form" [formGroup]="projectForm">
+        
+      <mat-form-field class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="projectForm.controls['name'].invalid && projectForm.controls['name'].errors!= null 
+            && projectForm.controls['name'].errors['required']">
+            Informa um nome válido
+          </mat-error>
+          <mat-error *ngIf="projectForm.controls['name'].invalid && projectForm.controls['name'].errors!= null 
+            && projectForm.controls['name'].errors['minlength']">
+            O nome deve conter no mínimo 4 caracteres
+          </mat-error>
+          <mat-error *ngIf="projectForm.controls['name'].invalid && projectForm.controls['name'].errors!= null 
+            && projectForm.controls['name'].errors['pattern']">
+            O nome deve ter no mínimo 2 palavras
+          </mat-error>
+        </mat-form-field>      
+        
+        <mat-form-field class="full-width">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <button mat-fab extended color="primary" [disabled]="!projectForm.valid" (click)="save()">
+            <mat-icon>done</mat-icon>
+            Salvar
+        </button>
+        <a mat-icon-button matTooltip="Cancelar" routerLink="/">
+            <mat-icon>close</mat-icon>
+        </a>
+    </form>
+</div>

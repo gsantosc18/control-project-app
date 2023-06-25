@@ -2,44 +2,49 @@ import { Project } from "../../interfaces/Project";
 import { ProjectRepository } from "../ProjectRepository";
 
 export class ProjectLocalImpl implements ProjectRepository {
-    all(): Project[] {
+    projects: Project[] = []
+
+    constructor() {
+        this.all()
+        .then(projects => this.projects = projects)
+    }
+
+    all(): Promise<Project[]> {
         let json = localStorage.getItem("projectsItens")
         if(json) {
-            return JSON.parse(localStorage.getItem("projectsItens") || "") || []
+            return Promise.resolve(JSON.parse(localStorage.getItem("projectsItens") || "") || [])
         }
-        return []
+        return Promise.reject()
     }
 
     save(project: Project): void {
-        let projects: Project[] = this.all()
-        projects.push(project)
-        localStorage.setItem("projectsItens", JSON.stringify(projects));
+        this.projects.push(project)
+        localStorage.setItem("projectsItens", JSON.stringify(this.projects));
     }
 
-    delete(id: number): void {
-        let projects: Project[] = this.all()
-        projects.splice(id, 1)
-        localStorage.setItem("projectsItens", JSON.stringify(projects));
+    delete(id: string): void {
+        this.projects.splice(this.findIndex(id), 1)
+        localStorage.setItem("projectsItens", JSON.stringify(this.projects));
     }
 
-    findById(id: string): Project {
-        let projects: Project[] = this.all()
+    findById(id: string): Promise<Project> {
         let index = this.findIndex(id)
-        return projects[index];
+        return Promise.resolve(this.projects[index]);
     }
 
     update(project: Project): void {
+        if(project.id == null) {
+            return;
+        }
         const index = this.findIndex(project.id);
         console.log("Projeto encontrado: "+index)
-        const projects: Project[] = this.all();
-        projects[index] = project;
-        localStorage.setItem("projectsItens", JSON.stringify(projects));
+        this.projects[index] = project;
+        localStorage.setItem("projectsItens", JSON.stringify(this.projects));
     }
 
     private findIndex(id: string): number {
-        const projects: Project[] = this.all();
-        for(let i = 0; i < projects.length; i++) {
-            if(projects[i].id == id) {
+        for(let i = 0; i < this.projects.length; i++) {
+            if(this.projects[i].id == id) {
                 return i
             }
         }

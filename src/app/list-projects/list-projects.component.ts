@@ -27,13 +27,16 @@ export class ListProjectsComponent implements OnInit {
     this.getProjects()
   }
 
-  openDialog(project: Project, index: number): void {
+  openDialog(project: Project, id: string | null): void {
+    if(!id) return
     this.dialog.open(DialogService, {
       data: {
         title: project.name,
         content: `Deseja realmente apagar o projeto ${project.name}?`,
-        onSuccess: () => {
-          this.projectService.delete(index)
+        onSuccess: async () => {
+          console.log("Iniciado o delete")
+          await this.projectService.delete(id)
+          console.log("Finalizado o delete e iniciado a listagem dos projetos")
           this.getProjects()
         }
       }
@@ -43,6 +46,6 @@ export class ListProjectsComponent implements OnInit {
   getProjects() {
     this.projectService
     .all()
-    .subscribe(p => this.listProjects = p)
+    .then(p => this.listProjects = p)
   }
 }

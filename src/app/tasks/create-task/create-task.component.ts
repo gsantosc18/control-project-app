@@ -6,6 +6,8 @@ import { TaskValidation } from 'src/app/validations/TaskValidation';
 import { ProjectService } from 'src/app/service/http/ProjectService';
 import { TaskService } from 'src/app/service/http/TaskService';
 import { Task } from 'src/app/interfaces/Task';
+import { Status, status } from 'src/app/interfaces/Status';
+import { getStatus } from 'src/app/interfaces/Status';
 
 @Component({
   selector: 'app-create-task',
@@ -16,6 +18,8 @@ export class CreateTaskComponent implements OnInit {
   projectId: string = ""
   project :Project | null = null
   taskForm: FormGroup = new TaskValidation().get()
+
+  listStatus: Status[] = status
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -32,6 +36,8 @@ export class CreateTaskComponent implements OnInit {
   async save() {
     let task:Task = this.taskForm.value
     task.projectId = this.projectId
+    task.status = getStatus(this.taskForm.value.status)
+    console.log(this.taskForm.value);    
     await this.taskService.add(task)
     this.router.navigate(['/projects',this.projectId,'tasks'])
   }

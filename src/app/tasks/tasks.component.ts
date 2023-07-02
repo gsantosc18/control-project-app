@@ -54,4 +54,8 @@ export class TasksComponent implements OnInit {
   getTasks() {
     this.taskService.findAllTasks(this.projectId).then(r => this.tasks = r)
   }
+
+  isConcluded(task: Task) {
+    return task.status?.id == 7
+  }
 }

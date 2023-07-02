@@ -22,8 +22,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProjectService } from './service/http/ProjectService';
 import { UpdateProjectComponent } from './update-project/update-project.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { CreateTaskComponent } from './tasks/create-task/create-task.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { UpdateProjectComponent } from './update-project/update-project.componen
     NavigationComponent,
     ListProjectsComponent,
     CreateProjectComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
+    TasksComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,

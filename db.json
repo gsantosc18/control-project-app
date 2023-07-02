@@ -7,5 +7,13 @@
       "id": "a72c527e-4474-4bed-a7b9-a3f4265f84c9"
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "name": "Essa é minha atividade de teste",
+      "description": "Minha atividade de teste de atividade para testar se a atividade está sendo salvada como uma atividade dentro do contexto de atividades",
+      "projectId": "a72c527e-4474-4bed-a7b9-a3f4265f84c9",
+      "createdAt": "2023-07-02T13:42:57.060Z",
+      "id": "61a2d17d-3426-436b-aeb9-fc1588c15ec2"
+    }
+  ]
 }

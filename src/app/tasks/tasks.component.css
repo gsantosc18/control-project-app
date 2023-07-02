@@ -10,3 +10,9 @@
 .list-tasks {
     margin-bottom: 10px;
 }
+.line-through {
+    text-decoration: line-through;
+}
+.isConcluded { 
+    background-color: #43c747 !important;
+}

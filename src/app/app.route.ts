@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core"
 import { UpdateProjectComponent } from "./update-project/update-project.component"
 import { TasksComponent } from "./tasks/tasks.component"
 import { CreateTaskComponent } from "./tasks/create-task/create-task.component"
+import { UpdateTaskComponent } from "./tasks/update-task/update-task.component"
 
 export const routes: Routes = [
     {
@@ -23,7 +24,7 @@ export const routes: Routes = [
         path: "projects/:projectId/createTask", component: CreateTaskComponent
     },
     {
-        path: "projects/:projectId/updateTask/:taskId", component: CreateTaskComponent
+        path: "projects/:projectId/updateTask/:taskId", component: UpdateTaskComponent
     }
 ]
 

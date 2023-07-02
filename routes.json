@@ -1,0 +1,6 @@
+{
+    "/projects": "/projects",
+    "/projects/:projectId": "/projects/:projectId",
+    "/projects/:projectId/tasks": "/tasks?projectId=:projectId",
+    "/projects/:projectId/tasks/:uuid": "/tasks/:uuid?project=:projectId"
+}

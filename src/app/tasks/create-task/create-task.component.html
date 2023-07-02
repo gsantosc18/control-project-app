@@ -1,0 +1,34 @@
+<app-navigation [showAddButton]="false" [title]="'Criar nova atividade - '+project?.name" [backRouter]="['/projects',projectId,'tasks']" [addRouter]="['/projects',projectId,'createTask']"></app-navigation>
+<div id="task-content">
+    <form class="form" [formGroup]="taskForm">
+        <mat-form-field class="full-width">
+            <mat-label>Projeto</mat-label>
+            <input [disabled]="true" matInput [value]="project?.name">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].errors!= null 
+                && taskForm.controls['name'].errors['required']">
+                Informa um nome válido
+            </mat-error>
+            <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].errors!= null 
+                && taskForm.controls['name'].errors['minlength']">
+                O nome deve conter no mínimo 4 caracteres
+            </mat-error>
+        </mat-form-field>      
+        
+        <mat-form-field class="full-width">
+            <mat-label>Descrição</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <button mat-fab extended color="primary" [disabled]="!taskForm.valid" (click)="save()">
+            <mat-icon>done</mat-icon>
+            Salvar
+        </button>
+        <a mat-icon-button matTooltip="Cancelar" [routerLink]="['/projects',projectId,'tasks']">
+            <mat-icon>close</mat-icon>
+        </a>
+    </form>
+</div>

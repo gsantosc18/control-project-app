@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class NavigationComponent {
   @Input() title = "Controle de projetos";
   @Input() showAddButton: boolean = false
-  @Input() router: string = ""
+  @Input() backRouter: string | any[] | null = null
+  @Input() addRouter: string | any[] | null = null
 }

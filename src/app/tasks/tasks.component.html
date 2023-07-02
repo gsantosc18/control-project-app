@@ -1,0 +1,51 @@
+<app-navigation [showAddButton]="true" title="Atividade do projeto" backRouter="/" [addRouter]="['/projects',projectId,'createTask']"></app-navigation>
+<div id="project-content">
+    <mat-card class="list-project">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>
+                {{ project.name }}
+            </mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content class="list-project-content">
+            <p>
+                {{ project.description }}
+            </p>
+            <p style="font-size: 10pt;">
+                <span style="font-weight: bold;">Criado em: </span>
+                {{ project.createdAt | date:'dd/MM/YYYY HH:mm:ss' }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div id="task-content">
+    <div *ngIf="tasks.length > 0">
+        <mat-card *ngFor="let task of tasks; let index = index" class="list-tasks">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>
+                    {{ task.name }}
+                </mat-card-title>
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content class="list-tasks-content">
+                <p>
+                    {{ task.description }}
+                </p>
+                <p style="font-size: 10pt;">
+                    <span style="font-weight: bold;">Criado em: </span>
+                    {{ task.createdAt | date:'dd/MM/YYYY HH:mm:ss' }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions align="start">
+                <button mat-icon-button color="primary" [routerLink]="['/projects',projectId,'updateTask', task.id]">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="openDialog(task)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

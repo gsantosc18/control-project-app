@@ -1,4 +1,3 @@
-import { ProjectLocalImpl } from './../../repository/impl/ProjectLocalImpl';
 import { ProjectRepository } from './../../repository/ProjectRepository';
 import { Injectable } from "@angular/core";
 import { Project } from "../../interfaces/Project";
@@ -31,7 +30,7 @@ export class ProjectService {
         console.log("Deletado projeto: id="+id)
     }
     
-    findById(id: string) {
+    findById(id: string): Promise<Project> {
         return this.projectRepository.findById(id)
     }
 

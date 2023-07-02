@@ -23,4 +23,20 @@ export class TaskRepositoryImpl implements TaskRepository {
     async delete(task: Task) {
         await fetch(`${this.PROJECT_URL}/${task.projectId}/tasks/${task.id}`, {method: "DELETE"})
     }
+
+    async findById(taskId: string, projectId: string): Promise<Task> {
+        return await fetch(`${this.PROJECT_URL}/${projectId}/tasks/${taskId}`).then(r => r.json())
+    }
+
+    async update(task: Task) {
+        const data = {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }
+        await fetch(`${this.PROJECT_URL}/${task.projectId}/tasks/${task.id}`, data)
+    }
 }

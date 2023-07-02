@@ -25,6 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { CreateTaskComponent } from './tasks/create-task/create-task.component';
+import { UpdateTaskComponent } from './tasks/update-task/update-task.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { CreateTaskComponent } from './tasks/create-task/create-task.component';
     CreateProjectComponent,
     UpdateProjectComponent,
     TasksComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { CreateTaskComponent } from './tasks/create-task/create-task.component';
     MatTooltipModule,
     FormsModule,
     AppRouteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatChipsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -7,18 +7,22 @@ export class TaskValidation {
             Validators.required,
             Validators.minLength(4)
         ]),
-        description: new FormControl('')
+        description: new FormControl(''),
+        status: new FormControl(1)
     })
 
     get() {
         return this.validations
     }
 
-    getByProject(task: Task): FormGroup {
+    getByTask(task: Task): FormGroup {
+        console.log("Minha atividade", task);
+        
         const validation = this.get()
         validation.setValue({
             name: task.name,
-            description: task.description
+            description: task.description,
+            status: task.status?.id
         })
         return validation
     }

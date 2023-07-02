@@ -1,4 +1,4 @@
-<app-navigation [showAddButton]="false" [title]="'Criar nova atividade - '+project?.name" [backRouter]="['/projects',projectId,'tasks']" [addRouter]="['/projects',projectId,'createTask']"></app-navigation>
+<app-navigation [showAddButton]="false" [title]="'Criar nova atividade - '+project?.name" [backRouter]="['/projects',projectId,'tasks']"></app-navigation>
 <div id="task-content">
     <form class="form" [formGroup]="taskForm">
         <mat-form-field class="full-width">
@@ -27,7 +27,7 @@
             <mat-label>Situação</mat-label>
             <mat-select formControlName="status">
                 <mat-option *ngFor="let status of listStatus" [value]="status.id">{{ status.name }}</mat-option>
-              </mat-select>
+            </mat-select>
         </mat-form-field>
 
         <button mat-fab extended color="primary" [disabled]="!taskForm.valid" (click)="save()">

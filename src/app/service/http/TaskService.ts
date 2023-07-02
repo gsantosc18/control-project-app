@@ -21,11 +21,20 @@ export class TaskService {
         task.createdAt = new Date()
         task.id = uuidv4();
         await this.taskRepository.save(task)
-        console.log(`Criada com sucesso a atividade ${task}`)
+        console.log(`Criada com sucesso a atividade ${task.name}`, task)
     }
 
     async delete(task: Task) {
         await this.taskRepository.delete(task)
-        console.log("Apagada a atividade "+task.name, task);
+        console.log(`Apagada a atividade ${task.name}`, task);
+    }
+
+    async findById(taskId: string, projectId: string) {
+        return await this.taskRepository.findById(taskId, projectId);
+    }
+
+    async update(task: Task) {
+        await this.taskRepository.update(task)
+        console.log(`Atualizada a atividade ${task.name}`, task);
     }
 }

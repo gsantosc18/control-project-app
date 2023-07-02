@@ -1,0 +1,12 @@
+#project-content .mat-mdc-card {
+    border-radius: 0;
+    padding: 15px 30px;
+    background-color: #2a3a93;
+    color: white;
+}
+#task-content {
+    margin: 15px;
+}
+.list-tasks {
+    margin-bottom: 10px;
+}

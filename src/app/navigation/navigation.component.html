@@ -1,17 +1,17 @@
 <mat-toolbar color="primary">
-    <div *ngIf="showAddButton; else elseBlock">
+    <div *ngIf="backRouter == null; else elseBlock">
         <a mat-icon-button>
             <mat-icon>menu</mat-icon>
         </a>
     </div>
     <ng-template #elseBlock>
-        <a mat-icon-button [routerLink]="router">
+        <a mat-icon-button [routerLink]="backRouter">
             <mat-icon>arrow_back</mat-icon>
         </a>
     </ng-template>
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
-    <a *ngIf="showAddButton" mat-icon-button routerLink="createProject">
+    <a *ngIf="showAddButton" mat-icon-button [routerLink]="addRouter">
         <mat-icon>add</mat-icon>
     </a>
 </mat-toolbar>

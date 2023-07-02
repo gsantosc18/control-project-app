@@ -1,5 +1,5 @@
 import { ProjectService } from './../service/http/ProjectService';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectValidation } from '../validations/ProjectValidation';
@@ -10,7 +10,7 @@ import { Project } from '../interfaces/Project';
   templateUrl: './update-project.component.html',
   styleUrls: ['./update-project.component.css']
 })
-export class UpdateProjectComponent {
+export class UpdateProjectComponent implements OnInit {
   projectForm: FormGroup
   private project: Project
 
@@ -19,10 +19,13 @@ export class UpdateProjectComponent {
     private route: Router,
     private projectService: ProjectService
   ) {
+    this.project = {id: null, name: null, description: null, createdAt: null}
+    this.projectForm = new ProjectValidation().getByProject(this.project)
+  }
+
+  async ngOnInit() {
     const idProject = this.activeRoute.snapshot.params['id']
-
-    this.project = this.projectService.findById(idProject)
-
+    this.project = await this.projectService.findById(idProject).then(data => data as Project)
     this.projectForm = new ProjectValidation().getByProject(this.project)
   }
 
